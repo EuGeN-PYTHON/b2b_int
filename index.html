@@ -17,6 +17,22 @@
       padding: 1rem;
       text-align: center;
       font-size: 1.5rem;
+      position: relative;
+    }
+    header a.admin-link {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem;
+      color: white;
+      text-decoration: none;
+      background: rgba(255,255,255,0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+    }
+    header a.admin-link:hover {
+      background: rgba(255,255,255,0.35);
     }
     .container {
       max-width: 900px;
@@ -78,7 +94,10 @@
   </style>
 </head>
 <body>
-  <header>Интернет для бизнеса</header>
+  <header>
+    Интернет для бизнеса
+    <a href="admin.html" class="admin-link">⚙ Админка</a>
+  </header>
   <div class="container">
     <h2>Доступные тарифы</h2>
     <label for="region">Выберите регион:</label>
