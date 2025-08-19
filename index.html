@@ -2,244 +2,166 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <title>B2B Интернет для бизнеса</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>B2B Tariffs</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background: #f9fafb;
-      color: #333;
     }
     header {
       background: #0096c7;
-      color: #fff;
+      color: white;
+      padding: 1rem;
       text-align: center;
-      padding: 1.2rem;
       font-size: 1.5rem;
-      font-weight: bold;
     }
     .container {
-      max-width: 1200px;
+      max-width: 900px;
       margin: auto;
       padding: 1rem;
     }
-    .controls {
-      margin: 1rem 0;
-      text-align: center;
-    }
-    select {
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-    .tariffs {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      padding: 1rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
-      cursor: pointer;
-      border: 2px solid transparent;
-    }
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .card.active {
-      border-color: #0096c7;
-      background: #e6f7fb;
-    }
-    .card h3 {
-      margin-top: 0;
-      color: #0096c7;
-    }
-    .lead-form {
+    h2 {
       margin-top: 2rem;
-      padding: 1.5rem;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .lead-form h2 {
-      margin-top: 0;
-      text-align: center;
       color: #0096c7;
     }
-    .lead-card label {
-      display: block;
-      text-align: left;
-      font-size: 0.9rem;
-      margin-top: 0.8rem;
-      margin-bottom: 0.3rem;
-      color: #333;
+    .tariff {
+      background: white;
+      padding: 1rem;
+      margin: 0.5rem 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
-    .lead-card input,
-    .lead-card select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      margin: 0 0 0.8rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-family: inherit;
-      box-sizing: border-box;
-      transition: border 0.2s, box-shadow 0.2s, background 0.2s;
-    }
-    .lead-card input:focus,
-    .lead-card select:focus {
-      border-color: #0096c7;
-      box-shadow: 0 0 0 3px rgba(0,150,199,0.2);
-      outline: none;
+    .tariff:hover {
+      transform: scale(1.02);
       background: #f0faff;
     }
-    .lead-card button {
-      width: 100%;
-      padding: 0.9rem;
-      border: none;
-      background: #0096c7;
-      color: #fff;
-      border-radius: 10px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
+    .tariff h3 {
+      margin: 0;
     }
-    .lead-card button:hover {
+    .tariff p {
+      margin: 0.2rem 0;
+    }
+    form {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-top: 2rem;
+    }
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    button {
+      background: #0096c7;
+      color: white;
+      border: none;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button:hover {
       background: #0077a6;
-      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
-  <header>Тарифы B2B Интернет</header>
+  <header>Интернет для бизнеса</header>
   <div class="container">
-    <div class="controls">
-      <label for="region">Выберите регион:</label>
-      <select id="region">
-        <option value="Москва">Москва</option> 
-        <option value="Краснодар">Краснодар</option> 
-        <option value="Самара">Самара</option>
-      </select>
-    </div>
-    <div id="tariffs" class="tariffs"></div>
+    <h2>Доступные тарифы</h2>
+    <label for="region">Выберите регион:</label>
+    <select id="region">
+      <option value="Москва">Москва</option>
+      <option value="Московская область">Московская область</option>
+      <option value="Санкт-Петербург">Санкт-Петербург</option>
+    </select>
+    <div id="tariffs"></div>
 
-    <div class="lead-form">
-      <h2>Оставить заявку</h2>
-      <form class="lead-card">
-        <label for="name">ФИО</label>
-        <input type="text" id="name" name="name" placeholder="Введите ФИО" required>
+    <h2>Оставить заявку</h2>
+    <form id="orderForm">
+      <label for="fullname">ФИО</label>
+      <input type="text" id="fullname" name="fullname" placeholder="Введите ваше ФИО" required>
 
-        <label for="phone">Телефон</label>
-        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+      <label for="phone">Телефон</label>
+      <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
 
-        <label for="address">Адрес подключения</label>
-        <input type="text" id="address" name="address" placeholder="Введите адрес" required>
+      <label for="address">Адрес подключения</label>
+      <input type="text" id="address" name="address" placeholder="Введите адрес" required>
 
-        <label for="region-input">Регион</label>
-        <input type="text" id="region-input" name="region" readonly>
+      <label for="tariff">Выберите тариф</label>
+      <select id="tariff" name="tariff"></select>
 
-        <label for="tariff-select">Тариф</label>
-        <select id="tariff-select" name="tariff" required>
-          <option value="">Выберите тариф</option>
-        </select>
-
-        <button type="submit">Отправить</button>
-      </form>
-    </div>
+      <button type="submit">Отправить заявку</button>
+    </form>
   </div>
 
   <script>
-    const demoTariffs = {
+    const defaultTariffs = {
       "Москва": [
-        {name:"МСК-100", speed:"100 Мбит/с", price:1200},
-        {name:"МСК-300", speed:"300 Мбит/с", price:2500},
-        {name:"МСК-1000", speed:"1 Гбит/с", price:4900}
+        {name:"Бизнес-100", speed:"100 Мбит/с", price:1200},
+        {name:"Бизнес-300", speed:"300 Мбит/с", price:2500},
+        {name:"Бизнес-1000", speed:"1 Гбит/с", price:4900}
       ],
-      "Краснодар": [
-        {name:"КР-50", speed:"50 Мбит/с", price:900},
-        {name:"КР-200", speed:"200 Мбит/с", price:1900}
+      "Московская область": [
+        {name:"МО-50", speed:"50 Мбит/с", price:900},
+        {name:"МО-200", speed:"200 Мбит/с", price:1900}
       ],
-      "Самара": [
-        {name:"СМР-100", speed:"100 Мбит/с", price:1000},
-        {name:"СМР-500", speed:"500 Мбит/с", price:2700}
+      "Санкт-Петербург": [
+        {name:"СПБ-100", speed:"100 Мбит/с", price:1000},
+        {name:"СПБ-500", speed:"500 Мбит/с", price:2700}
       ]
     };
 
-    const tariffsDiv = document.getElementById("tariffs");
-    const regionSelect = document.getElementById("region");
-    const regionInput = document.getElementById("region-input");
-    const tariffSelect = document.getElementById("tariff-select");
+    function loadTariffs() {
+      return JSON.parse(localStorage.getItem("tariffs")) || defaultTariffs;
+    }
 
-    let currentCards = [];
+    const regionSelect = document.getElementById("region");
+    const tariffsDiv = document.getElementById("tariffs");
+    const tariffSelect = document.getElementById("tariff");
 
     function renderTariffs(region) {
+      const tariffs = loadTariffs();
+      const list = tariffs[region] || [];
       tariffsDiv.innerHTML = "";
-      currentCards = [];
-      (demoTariffs[region] || []).forEach(t => {
-        const card = document.createElement("div");
-        card.className = "card";
-        card.dataset.tariff = t.name;
-        card.innerHTML = `<h3>${t.name}</h3>
-                          <p>Скорость: ${t.speed}</p>
-                          <p>Цена: ${t.price} ₽/мес</p>`;
-        card.addEventListener("click", () => {
-          selectTariff(t.name);
-        });
-        tariffsDiv.appendChild(card);
-        currentCards.push(card);
+      tariffSelect.innerHTML = "";
+      list.forEach(t => {
+        const div = document.createElement("div");
+        div.className = "tariff";
+        div.innerHTML = `<h3>${t.name}</h3>
+                         <p>Скорость: ${t.speed}</p>
+                         <p>Цена: ${t.price} ₽/мес</p>`;
+        tariffsDiv.appendChild(div);
+
+        const option = document.createElement("option");
+        option.value = t.name;
+        option.textContent = `${t.name} (${t.speed}, ${t.price}₽)`;
+        tariffSelect.appendChild(option);
       });
     }
 
-    function updateTariffOptions(region) {
-      tariffSelect.innerHTML = '<option value="">Выберите тариф</option>';
-      (demoTariffs[region] || []).forEach(t=>{
-        const opt = document.createElement("option");
-        opt.value = t.name;
-        opt.textContent = `${t.name} (${t.price} ₽/мес)`;
-        tariffSelect.appendChild(opt);
-      });
-    }
+    regionSelect.addEventListener("change", () => renderTariffs(regionSelect.value));
 
-    function selectTariff(tariffName) {
-      // обновляем select
-      tariffSelect.value = tariffName;
-
-      // обновляем подсветку карточек
-      currentCards.forEach(c=>{
-        if (c.dataset.tariff === tariffName) {
-          c.classList.add("active");
-        } else {
-          c.classList.remove("active");
-        }
-      });
-    }
+    document.getElementById("orderForm").addEventListener("submit", e => {
+      e.preventDefault();
+      alert("Заявка отправлена! Наш менеджер свяжется с вами.");
+      e.target.reset();
+    });
 
     // init
-    const initRegion = regionSelect.value;
-    regionInput.value = initRegion;
-    renderTariffs(initRegion);
-    updateTariffOptions(initRegion);
-
-    regionSelect.addEventListener("change", e=>{
-      const selected = e.target.value;
-      regionInput.value = selected;
-      renderTariffs(selected);
-      updateTariffOptions(selected);
-    });
-
-    tariffSelect.addEventListener("change", e=>{
-      if (e.target.value) {
-        selectTariff(e.target.value);
-      }
-    });
+    renderTariffs(regionSelect.value);
   </script>
 </body>
 </html>
