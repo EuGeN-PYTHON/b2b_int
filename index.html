@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; -webkit-text-stroke: #000000}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'; -webkit-text-stroke: #000000; min-height: 15.0px}
+    span.s1 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
+<p class="p1"><span class="s1">&lt;html lang="ru"&gt;</span></p>
+<p class="p1"><span class="s1">&lt;head&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8" /&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;title&gt;RT Интернет&lt;/title&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;style&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>body {margin:0;font-family:"Segoe UI",sans-serif;background:#f9fafb;color:#333;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>header {background:#023e8a;color:#fff;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>header h1 {margin:0;font-size:1.5rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>header select {padding:0.4rem 0.6rem;border-radius:6px;border:none;font-size:1rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>nav.tariff-nav {background:#f1f5f9;padding:1rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>nav.tariff-nav ul {display:flex;flex-wrap:wrap;gap:1rem;list-style:none;margin:0;padding:0;justify-content:center;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>nav.tariff-nav a {text-decoration:none;color:#023e8a;font-weight:500;padding:0.5rem 1rem;border-radius:6px;transition:0.3s;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>nav.tariff-nav a:hover {background:#caf0f8;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>section.tariffs {padding:2rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>section.tariffs h2 {text-align:center;font-size:2rem;margin-bottom:1.5rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.tariff-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.tariff-card {background:#fff;border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,0.08);padding:1.5rem;text-align:center;transition:transform 0.3s;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.tariff-card:hover {transform:translateY(-4px);}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.tariff-card h3 {margin:0 0 0.5rem;font-size:1.3rem;color:#023e8a;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.tariff-card .speed {color:#555;font-size:0.95rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.tariff-card .price {font-size:1.2rem;font-weight:600;margin:1rem 0;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.tariff-card .btn {display:inline-block;background:#0096c7;color:#fff;padding:0.6rem 1.2rem;border-radius:8px;text-decoration:none;font-weight:500;transition:0.3s;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.tariff-card .btn:hover {background:#0077b6;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>/* skeleton loader */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#skeleton {display:none;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.skeleton-card {height:160px;background:linear-gradient(90deg,#eee,#f5f5f5,#eee);background-size:200% 100%;animation:skeleton 1.2s infinite;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>@keyframes skeleton {0%{background-position:200% 0;}100%{background-position:-200% 0;}}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>/* lead form */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#connect-form {padding:2rem;background:#f1f5f9;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#connect-form h2 {text-align:center;margin-bottom:1rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.lead-card {max-width:480px;margin:0 auto;background:#fff;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,0.12);padding:2rem;text-align:center;transition:0.3s;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.lead-card:hover {transform:translateY(-4px);}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.lead-card svg {width:48px;height:48px;margin-bottom:1rem;fill:#0096c7;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.lead-card input,.lead-card select {width:100%;padding:0.8rem;margin:0.5rem 0;border:1px solid #ccc;border-radius:8px;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.lead-card button {background:#0096c7;color:#fff;border:none;padding:0.8rem 1.5rem;border-radius:8px;font-size:1rem;cursor:pointer;transition:0.3s;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.lead-card button:hover {background:#0077b6;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>#lead-status {margin-top:1rem;font-weight:500;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>footer {background:#023e8a;color:#fff;padding:1rem;text-align:center;margin-top:2rem;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>/* swiper */</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.swiper {width:100%;padding:2rem 0;display:none;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>.swiper-slide {height:auto;}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/style&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
+<p class="p1"><span class="s1">&lt;body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;header&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h1&gt;RT Интернет&lt;/h1&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;label for="region-select"&gt;Регион:&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;select id="region-select"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="Москва"&gt;Москва&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="Краснодар"&gt;Краснодар&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;option value="Самара"&gt;Самара&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/header&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;nav class="tariff-nav"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;ul&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#" data-cat="all"&gt;Все тарифы&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#" data-cat="mobile"&gt;Мобильная связь&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#" data-cat="tv"&gt;Телевидение&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#" data-cat="internet_tv"&gt;Интернет + ТВ&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#" data-cat="family"&gt;Семейные тарифы&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;li&gt;&lt;a href="#" data-cat="gaming"&gt;Игровые тарифы&lt;/a&gt;&lt;/li&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/ul&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/nav&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;section class="tariffs"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Наши тарифы&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="skeleton"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="skeleton-card"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="skeleton-card"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="skeleton-card"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="tariff-grid" class="tariff-grid"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div id="tariff-swiper" class="swiper"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="swiper-wrapper" id="swiper-wrapper"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="swiper-button-next"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="swiper-button-prev"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div class="swiper-pagination"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;section id="connect-form"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Оставить заявку&lt;/h2&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;div class="lead-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;&lt;path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/&gt;&lt;/svg&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;form id="lead-form" action="/api/lead" method="post"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;label for="fio"&gt;ФИО&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;label for="phone"&gt;Телефон&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;label for="address"&gt;Адрес подключения&lt;/label&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;input type="text" id="address" name="address" placeholder="Введите адрес" required&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;select name="tariff"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option value=""&gt;Выберите тариф&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option&gt;Интернет&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option&gt;Интернет + ТВ&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;option&gt;Мобильная связь&lt;/option&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;/select&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;input type="hidden" name="region" id="region-input"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;button type="submit"&gt;Отправить заявку&lt;/button&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;div id="lead-status"&gt;&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/form&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/section&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;footer&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>&lt;p&gt;© 2025 RT Интернет&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/footer&gt;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1">&lt;script src="https://unpkg.com/swiper/swiper-bundle.min.js"&gt;&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;script&gt;</span></p>
+<p class="p1"><span class="s1">(function(){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// --- Регион из поддомена ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const host = window.location.hostname;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let sub = host.split('.')[0].toLowerCase();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let regionMap = {moscow:"Москва", krasnodar:"Краснодар", samara:"Самара"};</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let region = regionMap[sub] || "Москва";</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const regionSelect = document.getElementById("region-select");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const regionInput = document.getElementById("region-input");</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>regionSelect.value = region;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>regionInput.value = region;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>regionSelect.addEventListener("change", e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const selected = e.target.value;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>let subdomain = Object.keys(regionMap).find(k=&gt;regionMap[k]===selected);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(subdomain) window.location.href = window.location.protocol+"//"+subdomain+"."+window.location.host.split('.').slice(1).join('.')+window.location.pathname;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>});</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// --- демо тарифы ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const demoTariffs = {</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>'Москва': [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{name:"Интернет Москва",speed:"100 Мбит/с",price:"700"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{name:"ТВ + Интернет",speed:"200 Мбит/с",price:"1100"}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>'Краснодар': [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{name:"Интернет Краснодар",speed:"80 Мбит/с",price:"600"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{name:"ТВ + Интернет",speed:"150 Мбит/с",price:"950"}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>],</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>'Самара': [</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{name:"Интернет Самара",speed:"60 Мбит/с",price:"550"},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>{name:"ТВ + Интернет",speed:"120 Мбит/с",price:"850"}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>]</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>};</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const grid = document.getElementById('tariff-grid');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const swiperEl = document.getElementById('tariff-swiper');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const swiperWrap = document.getElementById('swiper-wrapper');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const skeleton = document.getElementById('skeleton');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>let swiper;</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>function setLoading(isLoading){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>skeleton.style.display = isLoading ? 'grid' : 'none';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>grid.style.display = 'none';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>swiperEl.style.display = 'none';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>function cardHTML(t){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>return `&lt;div class="tariff-card"&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;h3&gt;${t.name}&lt;/h3&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>${t.speed? `&lt;p class="speed"&gt;Скорость: ${t.speed}&lt;/p&gt;` : ''}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;p class="price"&gt;${t.price} ₽/мес&lt;/p&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>&lt;a href="#connect-form" class="btn"&gt;Подключить&lt;/a&gt;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;`;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>function renderAsGrid(data){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>grid.innerHTML = data.map(cardHTML).join('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>grid.style.display = 'grid';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>function renderAsSwiper(data){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>if(swiper){ swiper.destroy(true,true); swiper=null; }</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>swiperWrap.innerHTML = data.map(t=&gt;`&lt;div class="swiper-slide"&gt;${cardHTML(t)}&lt;/div&gt;`).join('');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>swiperEl.style.display='block';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>swiper = new Swiper('.swiper',{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>slidesPerView:3,spaceBetween:24,loop:true,</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>pagination:{el:'.swiper-pagination',clickable:true},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>breakpoints:{0:{slidesPerView:1},640:{slidesPerView:2},1024:{slidesPerView:3}}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>async function loadTariffs(category='all'){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>setLoading(true);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>try{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const data = demoTariffs[region] || [];</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(data.length&gt;3) renderAsSwiper(data); else renderAsGrid(data);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}catch(e){</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>renderAsGrid(demoTariffs['Москва']);</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}finally{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>skeleton.style.display='none';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>loadTariffs('all');</span></p>
+<p class="p2"><span class="s1"></span><br></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>// --- форма ---</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const form=document.getElementById('lead-form');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>const status=document.getElementById('lead-status');</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>form.addEventListener('submit', async e=&gt;{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>e.preventDefault();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>status.style.display='block';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>status.textContent='Заявка отправляется…';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>const formData=Object.fromEntries(new FormData(form).entries());</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>try{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>const res=await fetch(form.action,{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>method:'POST',</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>headers:{'Content-Type':'application/json'},</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>body:JSON.stringify(formData)</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>});</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>if(!res.ok) throw new Error();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>status.style.color='#2b7a0b';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>status.textContent='Спасибо! Мы свяжемся с вами.';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>form.reset();</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>regionInput.value=region;</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}catch{</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>status.style.color='#b00020';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">      </span>status.textContent='Не удалось отправить заявку. Попробуйте позже.';</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>}</span></p>
+<p class="p1"><span class="s1"><span class="Apple-converted-space">  </span>});</span></p>
+<p class="p1"><span class="s1">})();</span></p>
+<p class="p1"><span class="s1">&lt;/script&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
+<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+</body>
+</html>
