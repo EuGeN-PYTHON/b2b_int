@@ -63,7 +63,15 @@
     "Санкт-Петербург":[{name:"СПБ-100",speed:"100 Мбит/с",price:1000}]
   };
 
-  function loadData() { return JSON.parse(localStorage.getItem("tariffs")) || defaultData; }
+  function loadData() { 
+    let data = JSON.parse(localStorage.getItem("tariffs")); 
+    if(!data){ 
+        data = defaultData; 
+        localStorage.setItem("tariffs", JSON.stringify(data));
+    }
+    return data;
+  }
+
   function saveData(data) { localStorage.setItem("tariffs", JSON.stringify(data)); }
 
   const regionSelect = document.getElementById("region-select");
@@ -125,4 +133,54 @@
     const data = loadData();
     const region = regionSelect.value;
     if(!data[region]) data[region]=[];
-    data[region].p
+    data[region].push({name,speed,price:parseInt(price)});
+    saveData(data); renderTariffs();
+  }
+
+  function editTariff(index){
+    const data = loadData();
+    const region = regionSelect.value;
+    const t = data[region][index];
+    const name = prompt("Название:",t.name); 
+    const speed = prompt("Скорость:",t.speed); 
+    const price = prompt("Цена:",t.price);
+    if(name && speed && price){ t.name=name; t.speed=speed; t.price=parseInt(price); saveData(data); renderTariffs(); }
+  }
+
+  function deleteTariff(index){
+    const data = loadData();
+    const region = regionSelect.value;
+    data[region].splice(index,1);
+    saveData(data); renderTariffs();
+  }
+
+  // события
+  regionSelect.addEventListener("change", renderTariffs);
+  document.getElementById("add-region").addEventListener("click", ()=>{
+    const name = document.getElementById("new-region").value.trim();
+    if(name) addRegion(name); 
+    else alert("Введите имя региона");
+  });
+  document.getElementById("rename-region").addEventListener("click", ()=>{
+    const newName = prompt("Новое имя региона:");
+    if(newName) renameRegion(newName);
+  });
+  document.getElementById("delete-region").addEventListener("click", deleteRegion);
+  document.getElementById("add-tariff").addEventListener("click", ()=>{
+    const name=document.getElementById("tariff-name").value.trim();
+    const speed=document.getElementById("tariff-speed").value.trim();
+    const price=document.getElementById("tariff-price").value.trim();
+    if(name && speed && price) { 
+      addTariff(name,speed,price); 
+      document.getElementById("tariff-name").value=""; 
+      document.getElementById("tariff-speed").value=""; 
+      document.getElementById("tariff-price").value=""; 
+    } else alert("Заполните все поля тарифа");
+  });
+
+  // init
+  renderRegions();
+  renderTariffs();
+</script>
+</body>
+</html>
