@@ -1,225 +1,245 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RT Интернет</title>
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2B Tariffs</title>
   <style>
-    body {margin:0;font-family:"Segoe UI",sans-serif;background:#f9fafb;color:#333;}
-    header {background:#023e8a;color:#fff;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
-    header h1 {margin:0;font-size:1.5rem;}
-    header select {padding:0.4rem 0.6rem;border-radius:6px;border:none;font-size:1rem;}
-    nav.tariff-nav {background:#f1f5f9;padding:1rem;}
-    nav.tariff-nav ul {display:flex;flex-wrap:wrap;gap:1rem;list-style:none;margin:0;padding:0;justify-content:center;}
-    nav.tariff-nav a {text-decoration:none;color:#023e8a;font-weight:500;padding:0.5rem 1rem;border-radius:6px;transition:0.3s;}
-    nav.tariff-nav a:hover {background:#caf0f8;}
-    section.tariffs {padding:2rem;}
-    section.tariffs h2 {text-align:center;font-size:2rem;margin-bottom:1.5rem;}
-    .tariff-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
-    .tariff-card {background:#fff;border-radius:16px;box-shadow:0 6px 16px rgba(0,0,0,0.08);padding:1.5rem;text-align:center;transition:transform 0.3s;}
-    .tariff-card:hover {transform:translateY(-4px);}
-    .tariff-card h3 {margin:0 0 0.5rem;font-size:1.3rem;color:#023e8a;}
-    .tariff-card .speed {color:#555;font-size:0.95rem;}
-    .tariff-card .price {font-size:1.2rem;font-weight:600;margin:1rem 0;}
-    .tariff-card .btn {display:inline-block;background:#0096c7;color:#fff;padding:0.6rem 1.2rem;border-radius:8px;text-decoration:none;font-weight:500;transition:0.3s;}
-    .tariff-card .btn:hover {background:#0077b6;}
-    /* skeleton loader */
-    #skeleton {display:none;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
-    .skeleton-card {height:160px;background:linear-gradient(90deg,#eee,#f5f5f5,#eee);background-size:200% 100%;animation:skeleton 1.2s infinite;}
-    @keyframes skeleton {0%{background-position:200% 0;}100%{background-position:-200% 0;}}
-    /* lead form */
-    #connect-form {padding:2rem;background:#f1f5f9;}
-    #connect-form h2 {text-align:center;margin-bottom:1rem;}
-    .lead-card {max-width:480px;margin:0 auto;background:#fff;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,0.12);padding:2rem;text-align:center;transition:0.3s;}
-    .lead-card:hover {transform:translateY(-4px);}
-    .lead-card svg {width:48px;height:48px;margin-bottom:1rem;fill:#0096c7;}
-    .lead-card input,.lead-card select {width:100%;padding:0.8rem;margin:0.5rem 0;border:1px solid #ccc;border-radius:8px;}
-    .lead-card button {background:#0096c7;color:#fff;border:none;padding:0.8rem 1.5rem;border-radius:8px;font-size:1rem;cursor:pointer;transition:0.3s;}
-    .lead-card button:hover {background:#0077b6;}
-    #lead-status {margin-top:1rem;font-weight:500;}
-    footer {background:#023e8a;color:#fff;padding:1rem;text-align:center;margin-top:2rem;}
-    /* swiper */
-    .swiper {width:100%;padding:2rem 0;display:none;}
-    .swiper-slide {height:auto;}
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+      color: #333;
+    }
+    header {
+      background: #0096c7;
+      color: #fff;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 1rem;
+    }
+    .controls {
+      margin: 1rem 0;
+      text-align: center;
+    }
+    select {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .tariffs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s, border 0.2s;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .card.active {
+      border-color: #0096c7;
+      background: #e6f7fb;
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #0096c7;
+    }
+    .lead-form {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .lead-form h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #0096c7;
+    }
+    .lead-card label {
+      display: block;
+      text-align: left;
+      font-size: 0.9rem;
+      margin-top: 0.8rem;
+      margin-bottom: 0.3rem;
+      color: #333;
+    }
+    .lead-card input,
+    .lead-card select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      margin: 0 0 0.8rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: inherit;
+      box-sizing: border-box;
+      transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .lead-card input:focus,
+    .lead-card select:focus {
+      border-color: #0096c7;
+      box-shadow: 0 0 0 3px rgba(0,150,199,0.2);
+      outline: none;
+      background: #f0faff;
+    }
+    .lead-card button {
+      width: 100%;
+      padding: 0.9rem;
+      border: none;
+      background: #0096c7;
+      color: #fff;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .lead-card button:hover {
+      background: #0077a6;
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
-<header>
-  <h1>RT Интернет</h1>
-  <div>
-    <label for="region-select">Регион:</label>
-    <select id="region-select">
-      <option value="Москва">Москва</option>
-      <option value="Краснодар">Краснодар</option>
-      <option value="Самара">Самара</option>
-    </select>
-  </div>
-</header>
+  <header>Тарифы B2B Интернет</header>
+  <div class="container">
+    <div class="controls">
+      <label for="region">Выберите регион:</label>
+      <select id="region">
+        <option value="Москва">Москва</option> 
+        <option value="Краснодар">Краснодар</option> 
+        <option value="Самара">Самара</option>
+      </select>
+    </div>
+    <div id="tariffs" class="tariffs"></div>
 
-<nav class="tariff-nav">
-  <ul>
-    <li><a href="#" data-cat="all">Все тарифы</a></li>
-    <li><a href="#" data-cat="mobile">Мобильная связь</a></li>
-    <li><a href="#" data-cat="tv">Телевидение</a></li>
-    <li><a href="#" data-cat="internet_tv">Интернет + ТВ</a></li>
-    <li><a href="#" data-cat="family">Семейные тарифы</a></li>
-    <li><a href="#" data-cat="gaming">Игровые тарифы</a></li>
-  </ul>
-</nav>
+    <div class="lead-form">
+      <h2>Оставить заявку</h2>
+      <form class="lead-card">
+        <label for="name">ФИО</label>
+        <input type="text" id="name" name="name" placeholder="Введите ФИО" required>
 
-<section class="tariffs">
-  <h2>Наши тарифы</h2>
-  <div id="skeleton">
-    <div class="skeleton-card"></div>
-    <div class="skeleton-card"></div>
-    <div class="skeleton-card"></div>
-  </div>
-  <div id="tariff-grid" class="tariff-grid"></div>
-  <div id="tariff-swiper" class="swiper">
-    <div class="swiper-wrapper" id="swiper-wrapper"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-pagination"></div>
-  </div>
-</section>
-
-<section id="connect-form">
-  <h2>Оставить заявку</h2>
-  <div class="lead-card">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/></svg>
-    <form id="lead-form" action="/api/lead" method="post">
-        <label for="fio">ФИО</label>
-        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
         <label for="phone">Телефон</label>
         <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+
         <label for="address">Адрес подключения</label>
         <input type="text" id="address" name="address" placeholder="Введите адрес" required>
-      <select name="tariff">
-        <option value="">Выберите тариф</option>
-        <option>Интернет</option>
-        <option>Интернет + ТВ</option>
-        <option>Мобильная связь</option>
-      </select>
-      <input type="hidden" name="region" id="region-input">
-      <button type="submit">Отправить заявку</button>
-      <div id="lead-status"></div>
-    </form>
+
+        <label for="region-input">Регион</label>
+        <input type="text" id="region-input" name="region" readonly>
+
+        <label for="tariff-select">Тариф</label>
+        <select id="tariff-select" name="tariff" required>
+          <option value="">Выберите тариф</option>
+        </select>
+
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
   </div>
-</section>
 
-<footer>
-  <p>© 2025 RT Интернет</p>
-</footer>
+  <script>
+    const demoTariffs = {
+      "Москва": [
+        {name:"МСК-100", speed:"100 Мбит/с", price:1200},
+        {name:"МСК-300", speed:"300 Мбит/с", price:2500},
+        {name:"МСК-1000", speed:"1 Гбит/с", price:4900}
+      ],
+      "Краснодар": [
+        {name:"КР-50", speed:"50 Мбит/с", price:900},
+        {name:"КР-200", speed:"200 Мбит/с", price:1900}
+      ],
+      "Самара": [
+        {name:"СМР-100", speed:"100 Мбит/с", price:1000},
+        {name:"СМР-500", speed:"500 Мбит/с", price:2700}
+      ]
+    };
 
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-(function(){
-  // --- Регион из поддомена ---
-  const host = window.location.hostname;
-  let sub = host.split('.')[0].toLowerCase();
-  let regionMap = {moscow:"Москва", krasnodar:"Краснодар", samara:"Самара"};
-  let region = regionMap[sub] || "Москва";
+    const tariffsDiv = document.getElementById("tariffs");
+    const regionSelect = document.getElementById("region");
+    const regionInput = document.getElementById("region-input");
+    const tariffSelect = document.getElementById("tariff-select");
 
-  const regionSelect = document.getElementById("region-select");
-  const regionInput = document.getElementById("region-input");
-  regionSelect.value = region;
-  regionInput.value = region;
+    let currentCards = [];
 
-  regionSelect.addEventListener("change", e=>{
-    const selected = e.target.value;
-    let subdomain = Object.keys(regionMap).find(k=>regionMap[k]===selected);
-    if(subdomain) window.location.href = window.location.protocol+"//"+subdomain+"."+window.location.host.split('.').slice(1).join('.')+window.location.pathname;
-  });
-
-  // --- демо тарифы ---
-  const demoTariffs = {
-    'Москва': [
-      {name:"Интернет Москва",speed:"100 Мбит/с",price:"700"},
-      {name:"ТВ + Интернет",speed:"200 Мбит/с",price:"1100"}
-    ],
-    'Краснодар': [
-      {name:"Интернет Краснодар",speed:"80 Мбит/с",price:"600"},
-      {name:"ТВ + Интернет",speed:"150 Мбит/с",price:"950"}
-    ],
-    'Самара': [
-      {name:"Интернет Самара",speed:"60 Мбит/с",price:"550"},
-      {name:"ТВ + Интернет",speed:"120 Мбит/с",price:"850"}
-    ]
-  };
-
-  const grid = document.getElementById('tariff-grid');
-  const swiperEl = document.getElementById('tariff-swiper');
-  const swiperWrap = document.getElementById('swiper-wrapper');
-  const skeleton = document.getElementById('skeleton');
-  let swiper;
-
-  function setLoading(isLoading){
-    skeleton.style.display = isLoading ? 'grid' : 'none';
-    grid.style.display = 'none';
-    swiperEl.style.display = 'none';
-  }
-  function cardHTML(t){
-    return `<div class="tariff-card">
-      <h3>${t.name}</h3>
-      ${t.speed? `<p class="speed">Скорость: ${t.speed}</p>` : ''}
-      <p class="price">${t.price} ₽/мес</p>
-      <a href="#connect-form" class="btn">Подключить</a>
-    </div>`;
-  }
-  function renderAsGrid(data){
-    grid.innerHTML = data.map(cardHTML).join('');
-    grid.style.display = 'grid';
-  }
-  function renderAsSwiper(data){
-    if(swiper){ swiper.destroy(true,true); swiper=null; }
-    swiperWrap.innerHTML = data.map(t=>`<div class="swiper-slide">${cardHTML(t)}</div>`).join('');
-    swiperEl.style.display='block';
-    swiper = new Swiper('.swiper',{
-      slidesPerView:3,spaceBetween:24,loop:true,
-      navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},
-      pagination:{el:'.swiper-pagination',clickable:true},
-      breakpoints:{0:{slidesPerView:1},640:{slidesPerView:2},1024:{slidesPerView:3}}
-    });
-  }
-  async function loadTariffs(category='all'){
-    setLoading(true);
-    try{
-      const data = demoTariffs[region] || [];
-      if(data.length>3) renderAsSwiper(data); else renderAsGrid(data);
-    }catch(e){
-      renderAsGrid(demoTariffs['Москва']);
-    }finally{
-      skeleton.style.display='none';
-    }
-  }
-  loadTariffs('all');
-
-  // --- форма ---
-  const form=document.getElementById('lead-form');
-  const status=document.getElementById('lead-status');
-  form.addEventListener('submit', async e=>{
-    e.preventDefault();
-    status.style.display='block';
-    status.textContent='Заявка отправляется…';
-    const formData=Object.fromEntries(new FormData(form).entries());
-    try{
-      const res=await fetch(form.action,{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify(formData)
+    function renderTariffs(region) {
+      tariffsDiv.innerHTML = "";
+      currentCards = [];
+      (demoTariffs[region] || []).forEach(t => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.dataset.tariff = t.name;
+        card.innerHTML = `<h3>${t.name}</h3>
+                          <p>Скорость: ${t.speed}</p>
+                          <p>Цена: ${t.price} ₽/мес</p>`;
+        card.addEventListener("click", () => {
+          selectTariff(t.name);
+        });
+        tariffsDiv.appendChild(card);
+        currentCards.push(card);
       });
-      if(!res.ok) throw new Error();
-      status.style.color='#2b7a0b';
-      status.textContent='Спасибо! Мы свяжемся с вами.';
-      form.reset();
-      regionInput.value=region;
-    }catch{
-      status.style.color='#b00020';
-      status.textContent='Не удалось отправить заявку. Попробуйте позже.';
     }
-  });
-})();
-</script>
+
+    function updateTariffOptions(region) {
+      tariffSelect.innerHTML = '<option value="">Выберите тариф</option>';
+      (demoTariffs[region] || []).forEach(t=>{
+        const opt = document.createElement("option");
+        opt.value = t.name;
+        opt.textContent = `${t.name} (${t.price} ₽/мес)`;
+        tariffSelect.appendChild(opt);
+      });
+    }
+
+    function selectTariff(tariffName) {
+      // обновляем select
+      tariffSelect.value = tariffName;
+
+      // обновляем подсветку карточек
+      currentCards.forEach(c=>{
+        if (c.dataset.tariff === tariffName) {
+          c.classList.add("active");
+        } else {
+          c.classList.remove("active");
+        }
+      });
+    }
+
+    // init
+    const initRegion = regionSelect.value;
+    regionInput.value = initRegion;
+    renderTariffs(initRegion);
+    updateTariffOptions(initRegion);
+
+    regionSelect.addEventListener("change", e=>{
+      const selected = e.target.value;
+      regionInput.value = selected;
+      renderTariffs(selected);
+      updateTariffOptions(selected);
+    });
+
+    tariffSelect.addEventListener("change", e=>{
+      if (e.target.value) {
+        selectTariff(e.target.value);
+      }
+    });
+  </script>
 </body>
 </html>
