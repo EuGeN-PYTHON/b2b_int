@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Админка тарифов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #0096c7;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.4rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 1rem;
+    }
+    h2 {
+      margin-top: 1.5rem;
+      color: #0096c7;
+    }
+    select, input, button {
+      padding: 0.5rem 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin: 0.2rem 0;
+    }
+    button {
+      cursor: pointer;
+      background: #0096c7;
+      color: white;
+      border: none;
+      transition: 0.2s;
+    }
+    button:hover {
+      background: #0077a6;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background: #f0faff;
+    }
+    .actions button {
+      margin-right: 0.3rem;
+    }
+    .form-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    .form-inline input {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <header>Админка тарифов</header>
+  <div class="container">
+    <label for="region">Выберите регион:</label>
+    <select id="region">
+      <option value="Москва">Москва</option>
+      <option value="Московская область">Московская область</option>
+      <option value="Санкт-Петербург">Санкт-Петербург</option>
+    </select>
+
+    <h2>Тарифы</h2>
+    <table id="tariff-table">
+      <thead>
+        <tr>
+          <th>Название</th>
+          <th>Скорость</th>
+          <th>Цена (₽/мес)</th>
+          <th>Действия</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>Добавить тариф</h2>
+    <div class="form-inline">
+      <input type="text" id="name" placeholder="Название тарифа">
+      <input type="text" id="speed" placeholder="Скорость">
+      <input type="number" id="price" placeholder="Цена">
+      <button id="add-btn">Добавить</button>
+    </div>
+  </div>
+
+  <script>
+    const defaultTariffs = {
+      "Москва": [
+        {name:"Бизнес-100", speed:"100 Мбит/с", price:1200},
+        {name:"Бизнес-300", speed:"300 Мбит/с", price:2500},
+        {name:"Бизнес-1000", speed:"1 Гбит/с", price:4900}
+      ],
+      "Московская область": [
+        {name:"МО-50", speed:"50 Мбит/с", price:900},
+        {name:"МО-200", speed:"200 Мбит/с", price:1900}
+      ],
+      "Санкт-Петербург": [
+        {name:"СПБ-100", speed:"100 Мбит/с", price:1000},
+        {name:"СПБ-500", speed:"500 Мбит/с", price:2700}
+      ]
+    };
+
+    // получить тарифы из localStorage
+    function loadTariffs() {
+      return JSON.parse(localStorage.getItem("tariffs")) || defaultTariffs;
+    }
+
+    // сохранить тарифы в localStorage
+    function saveTariffs(data) {
+      localStorage.setItem("tariffs", JSON.stringify(data));
+    }
+
+    const regionSelect = document.getElementById("region");
+    const tableBody = document.querySelector("#tariff-table tbody");
+    const addBtn = document.getElementById("add-btn");
+
+    function renderTable(region) {
+      const tariffs = loadTariffs();
+      const list = tariffs[region] || [];
+      tableBody.innerHTML = "";
+      list.forEach((t, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${t.name}</td>
+          <td>${t.speed}</td>
+          <td>${t.price}</td>
+          <td class="actions">
+            <button onclick="editTariff('${region}',${index})">✏️</button>
+            <button onclick="deleteTariff('${region}',${index})">🗑️</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function addTariff(region, name, speed, price) {
+      const tariffs = loadTariffs();
+      if (!tariffs[region]) tariffs[region] = [];
+      tariffs[region].push({name, speed, price});
+      saveTariffs(tariffs);
+      renderTable(region);
+    }
+
+    function deleteTariff(region, index) {
+      const tariffs = loadTariffs();
+      tariffs[region].splice(index,1);
+      saveTariffs(tariffs);
+      renderTable(region);
+    }
+
+    function editTariff(region, index) {
+      const tariffs = loadTariffs();
+      const t = tariffs[region][index];
+      const name = prompt("Название тарифа:", t.name);
+      const speed = prompt("Скорость:", t.speed);
+      const price = prompt("Цена:", t.price);
+      if (name && speed && price) {
+        tariffs[region][index] = {name, speed, price: parseInt(price)};
+        saveTariffs(tariffs);
+        renderTable(region);
+      }
+    }
+
+    // события
+    regionSelect.addEventListener("change", ()=>renderTable(regionSelect.value));
+    addBtn.addEventListener("click", ()=>{
+      const name = document.getElementById("name").value.trim();
+      const speed = document.getElementById("speed").value.trim();
+      const price = parseInt(document.getElementById("price").value.trim());
+      if (name && speed && price) {
+        addTariff(regionSelect.value, name, speed, price);
+        document.getElementById("name").value="";
+        document.getElementById("speed").value="";
+        document.getElementById("price").value="";
+      }
+    });
+
+    // init
+    renderTable(regionSelect.value);
+  </script>
+</body>
+</html>
