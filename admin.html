@@ -21,6 +21,16 @@
   </style>
 </head>
 <body>
+<script>
+  // --- Временная защита паролем ---
+  const adminPassword = "pavel13"; // установи свой пароль
+  const userInput = prompt("Введите пароль для доступа к админке:");
+  if(userInput !== adminPassword){
+    alert("Доступ запрещен");
+    window.location.href = "/"; // редирект на главную
+  }
+</script>
+
 <header>Админка тарифов и регионов</header>
 <div class="container">
   <h2>Регион</h2>
